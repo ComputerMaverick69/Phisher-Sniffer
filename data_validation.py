@@ -12,27 +12,27 @@ print(data_list)
 print("/////////////////////////////////")
 
 data = np.array(data_list)
-data1 = [i.split(',') for i in data]
+data_1 = [i.split(',') for i in data]
 
-print("Data1 before indexing - ", data1)
-print ("Length of data1 - ", len(data1))
+print("Data 1 before indexing - ", data_1)
+print ("Length of Data 1 - ", len(data_1))
 print ("////////////////////////////////")
 
-data1 = data1[0:-1]
+data_1 = data_1[0:-1]
 
-print ("Data1 after indexing - ", data1)
-print ("Length of data1 - ", len(data1))
+print ("Data 1 after indexing - ", data_1)
+print ("Length of Data 1 - ", len(data_1))
 
 # for i in data1:
 #    labels.append(i[30])
-data1 = np.array(data1)
+data_1 = np.array(data_1)
 
-print ("Converted to np array - ", data1)
-print ("Number of columns in a row - ", len(data1[0]))
-print ("Shape of data1 - ", data1.shape)
+print ("Converted to np array - ", data_1)
+print ("Number of columns in a row - ", len(data_1[0]))
+print ("Shape of Data 1 - ", data_1.shape)
 print ("////////////////////////////////")
 
-features = data1[:, :-1]
+features = data_1[:, :-1]
 
 print ("Features array - ", features)
 print ("Number of columns in a row - ", len(features[0]))
