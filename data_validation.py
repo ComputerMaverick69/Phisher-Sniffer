@@ -4,11 +4,11 @@
 import numpy as np
 from features_extraction import DIRECTORY_NAME, LOCALHOST_PATH
 
-with open(LOCALHOST_PATH + DIRECTORY_NAME + '/dataset/Training_Dataset.arff') as f:
+with open(LOCALHOST_PATH + DIRECTORY_NAME + '/Dataset/Training_Dataset.arff') as f:
     file = f.read()
 data_list = file.split('\n')
 
-print(data_list)
+# print(data_list)
 print("/////////////////////////////////")
 
 data = np.array(data_list)

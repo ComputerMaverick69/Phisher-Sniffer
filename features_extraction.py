@@ -283,7 +283,7 @@ def getHostnameFromURL(url):
 
 
 def main(url):
-    with open(LOCALHOST_PATH + DIRECTORY_NAME + '/markup.txt', 'r') as file:
+    with open(LOCALHOST_PATH + DIRECTORY_NAME + '/markup.txt', 'r', encoding='utf-8') as file:
         soup_string = file.read()
     
     soup = BeautifulSoup(soup_string, 'html.parser')
