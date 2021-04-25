@@ -12,17 +12,8 @@
         "default_icon": "icons/scam-alert16.png",
         "default_popup": "html/popup.html"
     },
-    "permissions": ["tabs", "activeTab", "http://*/*", "https://*/*"],
-    "background": {
-        "scripts": ["js/background.js"]
-    },
-    "content_scripts": [
-        {
-          "matches": ["<all_urls>"],
-          "js": ["js/content.js"],
-          "run_at": "document_end"
-        }
-    ],
+    "content_security_policy": "script-src 'self' https://ajax.googleapis.com; object-src 'self'",
+    "permissions": ["tabs", "activeTab", "http://*/*", "https://*/*", "https://ajax.googleapis.com/"],
     "author": "Reconnaissance Technologies",
     "offline_enabled": true,
     "version_name": "1.0.0-dev"
