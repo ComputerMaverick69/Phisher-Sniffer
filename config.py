@@ -1,2 +1,2 @@
-LOCALHOST_PATH = "/Applications/Reconnaissance Technologies/"
-DIRECTORY_NAME = "Phisher Sniffer"
+LOCALHOST_PATH = "/Applications/XAMPP/xamppfiles/htdocs/"
+DIRECTORY_NAME = "PhisherSniffer"

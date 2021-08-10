@@ -1,32 +1,33 @@
-$(function() {
-  // Send a message to content.js to fetch all the top domains
-  chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-    var activeTab = tabs[0];
-    chrome.tabs.sendMessage(activeTab.id, {"message": "fetch_top_domains"});
+// Purpose - This file contains all the logic relevant to the extension such as getting the URL, calling the server
+// side clientServer.php which then calls the core logic.
+
+function transfer(){	
+	var tablink;
+	chrome.tabs.getSelected(null,function(tab) {
+	   	tablink = tab.url;
+		$("#p1").text("The URL being tested is - "+tablink);
+
+		var xhr=new XMLHttpRequest();
+		params="url="+tablink;
+        // alert(params);
+		var markup = "url="+tablink+"&html="+document.documentElement.innerHTML;
+		xhr.open("POST","http://localhost/Phisher%20Sniffer/client_server.php",false);
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send(markup);
+		// Uncomment this line if you see some error on the extension to see the full error message for debugging.
+		// alert(xhr.responseText);
+		$("#div1").text(xhr.responseText);
+		return xhr.responseText;
+	});
+}
+
+$(document).ready(function(){
+  $("button").click(function(){	
+	  var val = transfer();
   });
+});
 
-  // Add a listener to handle the response from content.js
-  chrome.runtime.onMessage.addListener(
-    function(request, sender, sendResponse) {
-      if( request.message === "all_urls_fetched" ) {
-        var urlWithMaxLinks;
-        var maxLinks = 0;
-
-        for ( var key in request.data ) {
-          if(request.data.hasOwnProperty(key)) {
-            $('#tabs_table tr:last').after('<tr><td>' + key + '</td>' + '<td>' + request.data[key] +'</td></tr>');
-
-            if(request.data[key] > maxLinks) {
-              maxLinks = request.data[key];
-              urlWithMaxLinks = key;
-            }
-          }
-        }
-
-        if ( maxLinks != 0 ) {
-          chrome.runtime.sendMessage({"message": "open_max_url", "url": urlWithMaxLinks});
-        }
-      }
-    }
-  );
+chrome.tabs.getSelected(null,function(tab) {
+  var tablink = tab.url;
+	$("#p1").text("The URL being tested is - "+tablink);
 });

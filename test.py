@@ -2,7 +2,6 @@
 # for display. This file calls all the different components of the project (The ML model, features_extraction) and
 # consolidates the result.
 
-import sklearn.externals
 import joblib
 import features_extraction
 import sys
@@ -14,7 +13,7 @@ def getPredictionFromURL(url):
     features_test = features_extraction.main(url)
     features_test = np.array(features_test).reshape((1, -1))
     
-    classfier_handler  = joblib.load(LOCALHOST_PATH + DIRECTORY_NAME + '/Classifier/rf.pkl')
+    classfier_handler  = joblib.load(LOCALHOST_PATH + DIRECTORY_NAME + '/Classifier/rfk.pkl')
 
     pred = classfier_handler.predict(features_test)
     return int(pred[0])
@@ -33,7 +32,7 @@ def main():
     if prediction == 1:
         print("This Website is SAFE")
     elif prediction == -1:
-        print("This Website is a PHISHING Website")
+        print("This is a PHISHING Website")
 
 if __name__ == "__main__":
     main()
